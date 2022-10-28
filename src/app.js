@@ -51,8 +51,8 @@ app.use('/api/v1/conversations', conversationsRouter)
 const participantsRouter = require('./participants/participants.router')
 app.use('/api/v1/conversations/:conversation_id', participantsRouter)
 
-const messages = require('./participants/participants.router')
-app.use('/api/v1/conversations/:conversation_id', participantsRouter)
+const messagesRouter = require('./participants/participants.router')
+app.use('/api/v1/conversations/:conversation_id', messagesRouter)
 
 app.listen(port, () => {
   console.log(`Server started at port ${port}`)

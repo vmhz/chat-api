@@ -1,0 +1,50 @@
+table users {
+  id uuid
+  firstname  varchar
+  lastname varchar
+  email varchar
+  password varchar
+  profile_image varchar
+  phone integer(16)
+  updated_at timestamp
+}
+
+table mesagges {
+  id uuid
+  sender_by uuid
+  conversation_id uuid
+  message  varchar (255)
+  created_at timestamp
+  disabled_at timestamp
+}
+
+table participants {
+  id uuid
+  user_id uuid
+  conversation_id uuid
+  added_by uuid
+  removed_by uuid
+}
+
+table conversations {
+  id uuid
+  created_by uuid
+  disabled_by uuid
+  title varchar(30)
+  image_url varchar
+  created_at timestamp
+  updated_at timestamp
+}
+
+
+
+Ref: "users"."id" < "mesagges"."sender_by"
+
+Ref: "conversations"."id" < "mesagges"."conversation_id"
+
+Ref: "conversations"."id" < "participants"."conversation_id"
+
+Ref: "users"."id" < "participants"."user_id"
+
+
+
